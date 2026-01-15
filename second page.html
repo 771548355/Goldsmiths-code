@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <title>second page</title>
+
+    <style>
+         body {
+             margin: 0;
+         }
+
+         video {
+             width: 100%;
+         }
+         .video_holder {
+             background: #003933;
+             padding: 10px;
+         }
+
+         .button_holder {
+             background-color: #464646;
+             height: 100px;
+
+         }
+
+         .button {
+             background-color: #00cdae;
+             width: 30px;
+             height: 30px;
+             margin: 2px;
+             float: right;
+             overflow: hidden;
+         }
+
+         .button_marker {
+             background-color: #464646;
+             width: 10px;
+             height: 10px;
+             margin: 5px;
+         }
+
+         .canvas_holder {
+             height: 100%;
+             background-color: #005e5b;
+         }
+
+         canvas {
+             background-color: #00fff6;
+         }
+
+    </style>
+
+    <script>
+        function init() {
+
+            var canvas_one = document.getElementById("canvas_one");
+            var context_one = canvas_one.getContext("2d");
+
+            var canvas_two = document.getElementById("canvas_two");
+            var context_two = canvas_two.getContext("2d");
+
+            // var canvas_three = document.getElementById("canvas_three");
+            // var context_three = canvas_three.getContext("2d");
+
+            var 凤凰logo = document.getElementById("凤凰logo");
+
+            context_one.drawImage(凤凰logo,-240,-200,800,800)
+
+            var section_one = context_one.getImageData(0,0,100,100)
+            context_two.putImageData(section_one,0,0)
+            var section_two = context_one.getImageData(0,100,100,100)
+            context_two.putImageData(section_two,0,100)
+
+
+            var video = document.getElementById("video");
+            var canvas_three = document.getElementById("canvas_three");
+            var context_three = canvas_three.getContext("2d");
+
+            video.addEventListener("play", function() {
+                drawFrame();
+            })
+
+
+
+            ////////////////////////////////////////////////////
+// 在vle里
+//////////////////////////////////////////////////////////////////////////////
+            // alert("hello world");
+
+            var catButtom = document.getElementById('凤凰logo');
+
+            catButtom.onclick = function () {
+                var video = document.getElementById('video');
+                video.play();
+            }
+
+            var stopButtom = document.getElementById('stop');
+
+            stopButtom.onclick = function () {
+                var video = document.getElementById('video');
+                video.pause();
+            }
+
+
+
+            var videoOne = document.getElementById('videoOne');
+            var videoTwo = document.getElementById('videoTwo');
+            videoOne.onclick = function () {
+                var video = document.getElementById('video');
+                video.src = "vidoes/Movie.1.mp4";
+            }
+
+            videoTwo.onclick = function () {
+                var video = document.getElementById('video');
+                video.src = "vidoes/Movie.2.mp4";
+                video.currentTime = 0;
+            }
+        }
+
+    </script>
+
+</head>
+<body onload="init();">
+
+<h2>page 2</h2>
+
+<a href="index.html">back to main</a>
+
+<!--EVENTS-->
+<div class="video_holder">
+    <video width="320px" height="240px" loop id="video">
+        <source src="vidoes/works1.mp4" type="video/mp4">
+    </video>
+
+</div>
+
+
+<div class="button_holder">
+    <div class="button">
+        <div class="button_marker" id="stop"></div>
+    </div>
+
+    <div class="button">
+        <img src="images/凤凰logo.png" width="40px" id="凤凰logo">
+        </div>
+    <div class="button" id="swap">
+
+    </div>
+
+    </div>
+<div class="canvas_holder">
+    <canvas id="canvas_one" width="320px" height="240px"></canvas>
+    <canvas id="canvas_two" width="320px" height="240px"></canvas>
+    <canvas id="canvas_three" width="320px" height="240px"></canvas>
+</div>
+
+
+
+<!--    -->
+<!--</div>-->
+
+<!--<div class="button_holder">-->
+<!--    <div class="button" id="凤凰logo">-->
+<!--        <img src="images/凤凰logo.png" width="100px" height="100px"></img>-->
+<!--    </div>-->
+
+<!--    <div class="button" id="stop">-->
+<!--        <div class="button_marker">-->
+
+<!--    </div>-->
+
+<!--        -->
+<!--</div>-->
+
+
+</body>
+</html>
